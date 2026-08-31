@@ -182,7 +182,7 @@ DROP TABLE IF EXISTS `login`;
 CREATE TABLE `login` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(10) DEFAULT NULL,
-  `password` varchar(30) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `type` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
@@ -190,26 +190,26 @@ CREATE TABLE `login` (
 /*Data for the table `login` */
 
 insert  into `login`(`id`,`username`,`password`,`type`) values 
-(1,'admin','admin','admin'),
-(2,'nava','nava','mechanic'),
-(3,'electro','electro','station'),
-(5,'joseph','joseph','m_unit'),
-(6,'manu','manu','m_unit'),
-(7,'james','james','m_unit'),
-(8,'rahul','rahul','mechanic'),
-(9,'current','current','station'),
-(10,'amith','amith','user'),
-(11,'afnan','afnan','mechanic'),
-(12,'mohan','mohan','m_unit'),
-(13,'jack','jack','m_unit'),
-(14,'Navaneeth','Navaneeth','user'),
-(15,'user','user','user'),
-(16,'today','today','mechanic'),
-(17,'hp123','hp123','pending'),
-(18,'mech','mech','pending'),
-(19,'uiui','uiui','m_unit'),
-(20,'janas','janas','user'),
-(21,'manoj','manoj','m_unit');
+(1,'admin','scrypt:32768:8:1$Bf2pSZbbaSYfy5g6$bb8aedfa362b8e8c935e1387758f06709771dcb340cc0b0c39c68a943a55a5cbd2a146e4c516668cb3f896a2da2e915bea3721a22f141e11b8121c3b4f748de0','admin'),
+(2,'nava','scrypt:32768:8:1$5vK368WEhjuVbINv$373c18d8884d11cf0130171e4d72cff0732de636347b2820d2db24f27c89744f96ccbdb6e6d8ccdc1904e2e39530fd07606a6289ee8d3dfbc9af12ba7435765e','mechanic'),
+(3,'electro','scrypt:32768:8:1$OXBIzqI4rYUcAE20$fef44ec2c8ab7f77a2cfd58661453f9d72a40349bb9773b6a03156412998a066d7d7649a2e199104454ebf30d229f745656da5157ef3ad6e323aaaa1c1a795b8','station'),
+(5,'joseph','scrypt:32768:8:1$tv83A6kNRpX7XEm4$d5523c4cf4cf2bd0963499945f36c3c3a13f0e8146245be27f71705c919d958c5626d64e5e2f5b73b6379054a506fcb37365ba0a68c0919560d02cf833a180ff','m_unit'),
+(6,'manu','scrypt:32768:8:1$i1mZVDkQfuEj7kZS$fde502504e889c788238f09d10c8229639bfd531bdcb2cdbe3f4a31f6a1144d5caeb8e69ab58cb0c3b070498f85791148d5a5afee25007b7b42c329605be5244','m_unit'),
+(7,'james','scrypt:32768:8:1$ATeqhYfmPCF8a1Lp$f5b26e69b53fb98b8486ebfd565bfa5f38ced91e8fffe31267b6ce3ea361d8c40b47ecf79b562972235c52977ddfe841b84d70ceabde750129c4844099e16aac','m_unit'),
+(8,'rahul','scrypt:32768:8:1$Ko4kpUhoAmfm9ST9$e02b6496a1c73d20d6b3fd88fcb8ca083756e6b748f596032f6925faad5951b4cfee0221a05752a00ae738ea26652055f89b8c3cdaca6d26dbb6fdcf0f579fbb','mechanic'),
+(9,'current','scrypt:32768:8:1$l3l3REJII19MWisj$84d9b92db2fa6e427322ef350f044e3669c3f4234808939e1eeb7d856e36a39fa5d3e947691db4d2e89b4bf09cbe871b54a6b425f10e56e05edd3642a505a10d','station'),
+(10,'amith','scrypt:32768:8:1$0F9x6r6lotFh1SG7$7dd67f3c9541aef9e56cbbdbf83e36434585f1c7e468191d51f7bdb4a95461d3a902be51dff0841098dcb4e1c495874d130e8ada42bedab9d1289ead0352feb3','user'),
+(11,'afnan','scrypt:32768:8:1$xpt04apMk17yuRfG$b9e2074344523ac4a0d99ba9e1f13b590b2fb80af05c6619f8a09f3a4c21ae91cec4b6b10d6b6200763afc02887e34bda85fffcda6872315aac440963e3fb282','mechanic'),
+(12,'mohan','scrypt:32768:8:1$VqC4PhE34mzrfuc5$7936abc52ea050a25e9e70157b707f63e020dca6e3152b2f31fa1799c454d76a5a1ea6f72006433a66cb8bd8113cd71ea5c2929a8b5e3753aa4764ecb0cd085d','m_unit'),
+(13,'jack','scrypt:32768:8:1$wFDbgHFwScU9doYs$1a6126b8c2803b5cb3e29aab4889e8d2114e497aec4059c40a5697c6daaeb49c3d744a4ad3059f649acf1b6c7cc8a7e9dc54fb90814b7056938c3d8e9a6849b4','m_unit'),
+(14,'Navaneeth','scrypt:32768:8:1$oDB3TM27bZFi8B8a$a6df67770750fd7a6ba11fbbc4417fbb164bc6c569f9bccbd8a6b6ce6271ce9287e9586b028ecf510a6abe9db9f932d9496a769e0c2572dd03dad78119fc9d03','user'),
+(15,'user','scrypt:32768:8:1$DFGEtX8x1M9KZr1u$6a1555439a769756ed61a7fdf4e2a21c29acd42e387ff8dec4a90ce8577ef5caeaebb3a1df2a6a505248e5c404bfde1ca763bc0d1cb9b86aef08d17a2577e8ec','user'),
+(16,'today','scrypt:32768:8:1$0QxAynZeMEG8wAh3$b37a336a1e9376f9000b2b72067e7a94e27be17b6889f4fbeede2bacd141822091388219378c64992f4587593652e3ba4885fb7319a3e8afeaca372e24647589','mechanic'),
+(17,'hp123','scrypt:32768:8:1$UtIErUtOEudoTRFe$a6e9f9bb3b1a7db2388c016c156252d4061ef16c0f98f64252e60e0d274892f42ae713e7f7d621c9cb940115370f9705d351053b0df68e73458be1488520d094','pending'),
+(18,'mech','scrypt:32768:8:1$Owstjr7qwxVRQSx1$617239c4317f40180366732f87f93e8f8cb2870363447f0391b43469a4371992873a7442d70b0c8a2c09313386da33573b110e4509894a4e10f7533638e33f1e','pending'),
+(19,'uiui','scrypt:32768:8:1$yiMR71KCSqj8QlHN$72042d72d75d48c66666bf8f182d2cc46eb573d01258ec917a66258d2325dacd84857da1f9eff86cad0005a8208f93db92a3860c9d38c90de6d7c70d1dde697d','m_unit'),
+(20,'janas','scrypt:32768:8:1$1BaQijapnJMZKwjt$4495367f999f5b421e93ce393f5a7d5efa4edf31b0e0ede4cb2e5d6f98dcb46fa1696263e2414a5c8950dcd590409fad16ff1546dd8966061767a7af38c39e6b','user'),
+(21,'manoj','scrypt:32768:8:1$TPO3r6uYKAAPxPuC$c34fe2a137867b25264c4f5833868afd384fca5129f071428bbc65eee84a8761959c672eba4ef57821ffc456179eca65c3b2fbe95facd87094564f6f2c4e127e','m_unit');
 
 /*Table structure for table `mechanic` */
 

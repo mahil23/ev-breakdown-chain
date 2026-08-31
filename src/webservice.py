@@ -1,5 +1,6 @@
 from flask import *
 from src.dbconnectionnew import *
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from flask import Blueprint
 
@@ -10,11 +11,11 @@ def login():
     print(request.form)
     username=request.form['username']
     password=request.form['password']
-    qry="select*from `login` where username=%s and `password`=%s"
-    val=(username,password)
+    qry="select*from `login` where username=%s"
+    val=(username,)
     s=selectone(qry,val)
 
-    if s is None:
+    if s is None or not check_password_hash(s['password'], password):
         return jsonify({'task':'invalid'})
     else:
         id=s['id']
@@ -45,8 +46,9 @@ def REGISTER():
     PHONE=request.form['phone']
     username = request.form['uname']
     password = request.form['password']
+    hashed_password = generate_password_hash(password)
     qry1 = "INSERT INTO `login` VALUES(NULL,%s,%s,'user')"
-    val = (username, password)
+    val = (username, hashed_password)
     id = iud(qry1, val)
     qry = "INSERT INTO `USER` VALUES (NULL,%s,%s,%s,%s,%s,%s,%s,%s)"
     val1 = (str(id), FIRSTNAME,LASTNAME,PLACE,PIN,POST,EMAIL,PHONE)
@@ -64,8 +66,9 @@ def register_mobile_unit():
     PHONE=request.form['phone']
     username = request.form['uname']
     password = request.form['password']
+    hashed_password = generate_password_hash(password)
     qry1 = "INSERT INTO `login` VALUES(NULL,%s,%s,'user')"
-    val = (username, password)
+    val = (username, hashed_password)
     id = iud(qry1, val)
     qry = "INSERT INTO `USER` VALUES (NULL,%s,%s,%s,%s,%s,%s,%s,%s)"
     val1 = (str(id), FIRSTNAME,LASTNAME,PLACE,PIN,POST,EMAIL,PHONE)

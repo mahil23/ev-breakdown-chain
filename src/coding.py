@@ -1,5 +1,6 @@
 from flask import *
 from src.dbconnectionnew import *
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from flask import Blueprint
 
@@ -39,10 +40,10 @@ def login():
 def logincode():
     username=request.form['textfield']
     password=request.form['textfield2']
-    qry="select*from login where username=%s and password=%s"
-    val=(username,password)
+    qry="select*from login where username=%s"
+    val=(username,)
     res=selectone(qry,val)
-    if res is None:
+    if res is None or not check_password_hash(res['password'], password):
         return''' <script>alert("invalid");window.location='/' </script>'''
     elif res['type']=='admin':
         session['lid'] = res['id']
@@ -113,8 +114,9 @@ def add_and_manage_station1():
     longtitude=request.form['textfield6']
     username=request.form['textfield7']
     password=request.form['textfield8']
+    hashed_password = generate_password_hash(password)
     qry1 = "INSERT INTO `login` VALUES(NULL,%s,%s,'pending')"
-    val=(username,password)
+    val=(username,hashed_password)
     id=iud(qry1,val)
     qry="INSERT INTO `charging_station` VALUES (NULL,%s,%s,%s,%s,%s,%s,%s)"
     val1=(str(id),name,place,phone,email,latitude,longtitude)
@@ -272,8 +274,9 @@ def REGISTER1():
     LONGITUDE=request.form['textfield6']
     username = request.form['textfield7']
     password = request.form['textfield8']
+    hashed_password = generate_password_hash(password)
     qry1 = "INSERT INTO `login` VALUES(NULL,%s,%s,'pending')"
-    val = (username, password)
+    val = (username, hashed_password)
     id = iud(qry1, val)
     qry = "INSERT INTO `mechanic` VALUES (NULL,%s,%s,%s,%s,%s,%s,%s)"
     val1 = (str(id), FIRSTNAME,LASTNAME,PHONE,EMAIL,LATITUDE,LONGITUDE)
@@ -406,8 +409,9 @@ def add_mobile_unit1():
 
     username=request.form['textfield4']
     password=request.form['textfield5']
+    hashed_password = generate_password_hash(password)
     qry1 = "INSERT INTO `login` VALUES(NULL,%s,%s,'m_unit')"
-    val=(username,password)
+    val=(username,hashed_password)
     id=iud(qry1,val)
     qry="INSERT INTO `mobile_unit` VALUES (NULL,%s,%s,%s,%s,%s)"
     val1=(str(id),dname,vehicle,session['lid'],capacity)
@@ -708,8 +712,9 @@ def RegisterUser():
     PHONE=request.form['phone']
     username = request.form['uname']
     password = request.form['password']
+    hashed_password = generate_password_hash(password)
     qry1 = "INSERT INTO `login` VALUES(NULL,%s,%s,'user')"
-    val = (username, password)
+    val = (username, hashed_password)
     id = iud(qry1, val)
     qry = "INSERT INTO `USER` VALUES (NULL,%s,%s,%s,%s,%s,%s,%s,%s)"
     val1 = (str(id), FIRSTNAME,LASTNAME,PLACE,PIN,POST,EMAIL,PHONE)
