@@ -1,0 +1,37 @@
+{% extends 'EVINDEX.html' %}
+{% block body %}
+<body>
+  <form id="form1" name="form1" method="post" action="add_slot">
+    <table class="table table-bordered table-hover table-striped ">
+      <thead class="table-dark">
+        <tr>
+          <th>Type</th>
+          <th>Slot No</th>
+          <th>Details</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in val %}
+        <tr>
+          <td>{{ i['type'] }}</td>
+          <td>{{ i['slot_number'] }}</td>
+          <td>{{ i['details'] }}</td>
+          <td class="text-start">
+            <a href="edit_slot?id={{ i['slot_id'] }}" class="btn btn-primary btn-sm">Edit</a>
+            <a href="delete_slot?id={{ i['slot_id'] }}" class="btn btn-danger btn-sm">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <button type="submit" name="submit" class="btn btn-success w-100">Add Slot</button>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </form>
+</body>
+{% endblock %}

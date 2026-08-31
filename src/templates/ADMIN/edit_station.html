@@ -1,0 +1,49 @@
+{% extends 'adminindex.html'%}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="edit_station1">
+  <table width="200" border="1" class="table table-dark table-striped">
+    <tr>
+      <th scope="row">name</th>
+      <td><label>
+        <input type="text" name="textfield" value="{{val['name']}}"/>
+      </label></td>
+    <tr>
+      <th scope="row">place</th>
+      <td><label>
+        <input type="text" name="textfield2" value="{{val['place']}}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">phone</th>
+      <td><label>
+        <input type="text" name="textfield3" value="{{val['phone']}}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">email</th>
+      <td><label>
+        <input type="text" name="textfield4" value="{{val['email']}}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">latitude</th>
+      <td><label>
+        <input type="text" name="textfield5" value="{{val['latitude']}}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">longtitude</th>
+      <td><label>
+        <input type="text" name="textfield6" value="{{val['longitude']}}"/>
+      </label></td>
+    </tr>
+     <tr>
+      <th colspan="2" scope="row"><label>
+        <input type="submit" name="submit" value="Update" />
+      </label></th>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

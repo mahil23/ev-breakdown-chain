@@ -1,0 +1,35 @@
+{% extends 'userindex.html' %}
+{% block body %}
+
+<body>
+    <div class="table-container">
+        <table class="table table-bordered text-black">
+            <thead>
+                <tr class="">
+                    <th>Name</th>
+                    <th>Status</th>
+                    <th>Phone</th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in val %}
+                <tr>
+                    <td>{{ i['fname'] }} {{ i['lname'] }}</td>
+                    <td>{{ i['status'] }}</td>
+                    <td>{{ i['phone'] }}</td>
+                    <td>
+                        <form method="post" action="{{('send_feedback_mech') }}">
+                            <input type="hidden" name="mid" value="{{ i.mid }}">
+                            <textarea name="feedback" class="form-control mb-2" placeholder="Enter feedback"></textarea>
+                            <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'EVINDEX.html'%}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="edit_mobile_unit1">
+  <table width="200" border="1" class="table table-dark table-striped">
+    <tr>
+      <th scope="row">driver</th>
+      <td><label>
+        <input type="text" name="textfield" value="{{val['driver']}}" required pattern="[A-Z a-z.]{3,25}"/>
+      </label></td>
+    <tr>
+      <th scope="row">vehicle</th>
+      <td><label>
+        <input type="text" name="textfield2" value="{{val['vehicle_num']}}" required/>
+      </label></td>
+    </tr>
+    <tr>
+      <th scope="row">capacity</th>
+      <td><label>
+        <input type="text" name="textfield3" value="{{val['capacity']}}" required/>
+      </label></td>
+    </tr>
+
+    <tr>
+      <th colspan="2" scope="row"><label>
+        <input type="submit" name="Submit" value="Update" />
+      </label></th>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'm_unit_index.html'%}
+{% block body %}
+
+<body>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Name</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+          <th>Update Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in val %}
+        <tr>
+          <td>{{ i['date'] }}</td>
+          <td>&nbsp;{{ i['fname'] }} {{ i['lname'] }}</td>
+          <td>{{ i['latitude'] }}</td>
+          <td>{{ i['longitude'] }}</td>
+          <td>
+            <form id="form1" name="form1" method="post" action="{{ ('update_status') }}" class="d-flex gap-2">
+              <input type="hidden" name="request_id" value="{{ i.request_id }}">
+              
+              <!-- Input field with rounded corners -->
+              <input type="text" name="status" class="form-control rounded-start" placeholder="Enter status" required pattern="[A-Z a-z.]{3,25}" />
+      
+              <!-- Green Update button -->
+              <button type="submit" class="btn btn-success px-3">Update</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="d-flex flex-column p-4 bg-light rounded shadow-sm" style="width: 100%;">
+      <h3 class="mb-4 " style="color: #009879;">Update Your Location</h3>
+      
+      <form id="form1" name="form1" method="post" action="{{('updatelocation') }}">
+        <div class="mb-3">
+          div class="mb-3">
+          <label for="maplink" class="form-label">Google Maps Link</label>
+          <input type="text" class="form-control" id="maplink" name="maplink" placeholder="Enter google maps link" value="" />
+        </div>
+        
+        <div class="mt-4">
+          <button type="submit" class="p-2 text-white" name="Submit" style="background-color: #009879; border-radius: 10px; border: none;">Update Location</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+</body>
+{% endblock %}

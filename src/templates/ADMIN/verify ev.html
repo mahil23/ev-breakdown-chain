@@ -1,0 +1,32 @@
+{% extends 'adminindex.html'%}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1" class="table table-dark table-striped">
+    <tr>
+      <th scope="col">NAME</th>
+      <th scope="col">PHONE</th>
+      <th scope="col">EMAIL</th>
+<!--      <th scope="col">LATITUDE</th>-->
+<!--      <th scope="col">LONGITUDE</th>-->
+      <th scope="col">&nbsp;</th>
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td>&nbsp;{{i['name']}} </td>
+      <td>&nbsp;{{i['phone']}}</td>
+      <td>&nbsp;{{i['email']}}</td>
+<!--      <td>&nbsp;{{i['']}}</td>-->
+<!--      <td>&nbsp;{{i['']}}</td>-->
+      <td>
+        {% if i['type']=='station' %} Accepted {% elif i['type']=='reject'%} Rejected
+        {% else %}
+        <p><a href="Accept_ev?id={{i['id']}}">accept</a></p>
+      <p><a href="reject_ev?id={{i['id']}}">reject</a></p>
+      {% endif %}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

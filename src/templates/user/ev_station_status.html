@@ -1,0 +1,37 @@
+{% extends 'userindex.html' %}
+{% block body %}
+
+<body>
+    <div class="table-container">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Booking Time</th>
+                    <th>Booking Date</th>
+                    <th>Status</th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in val %}
+                <tr>
+                    <td>{{ i['name']}}</td>
+                    <td>{{ i['booking_time'] }}</td>
+                    <td>{{ i['booking_date'] }}</td>
+                    <td>{{ i['status'] }}</td>
+                    <td>
+                        <form method="post" action="{{('send_feedback_ev') }}">
+                            <input type="hidden" name="mid" value="{{ i.station_id }}">
+                            <textarea name="feedback" class="form-control mb-2" placeholder="Enter feedback"></textarea>
+                            <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+{% endblock %}

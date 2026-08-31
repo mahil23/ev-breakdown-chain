@@ -1,0 +1,79 @@
+{% extends 'userindex.html'%}
+{% block body %}
+
+<body>
+    <div>
+
+        <div class="d-flex flex-column p-4 bg-light rounded shadow-sm" style="width: 100%;">
+            <h3 class="mb-4 " style="color: #009879;">Fill Your Location to see nearest Charging Station</h3>
+            
+            <form id="form1" name="form1" method="post" action="{{('nearest_charging_station') }}">
+              <!-- <div class="mb-3">
+                <label for="maplink" class="form-label">Google Maps Link</label>
+                <input type="text" class="form-control" id="maplink" name="maplink" placeholder="Enter google maps link" value="" />
+              </div> -->
+              <div class="mb-3">
+                <label for="lati" class="form-label">Latitude</label>
+                <input type="text" class="form-control" id="lati" name="lati" placeholder="Enter latitude" value="" />
+              </div>
+              
+              <div class="mb-3">
+                <label for="longi" class="form-label">Longitude</label>
+                <input type="text" class="form-control" id="longi" name="longi" placeholder="Enter longitude" value="" />
+              </div>
+              
+              <div class="mt-4">
+                <button type="submit" class="p-2 text-white" name="Submit" style="background-color: #009879; border-radius: 10px; border: none;">Update Location</button>
+              </div>
+            </form>
+          </div>
+          <div class="table-container" >
+            <table>
+              <thead>
+                <tr>
+
+                  <th>Name</th>
+                  <th>Phone</th>
+                  <th>Latitude</th>
+                  <th>Longitude</th>
+                  <th>Book</th>
+                    
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in val %}
+                <tr>
+                 
+                  <td>{{ i['name']}}</td>
+                  <td>{{i['phone']}}</td>
+                  <td>{{i['latitude']}}</td>
+                  <td>{{i['longitude']}}</td>
+                  <td class="">
+                    <form id="form1" name="form1" method="post" action="{{('view_booking_form') }}">
+                      <table width="200" border="1" class="table">
+                        <tr>
+                          
+                          <label>
+                            <input type="hidden" name="station_id" value="{{ i.lid }}">
+                          </label>
+
+                          
+                            <label>
+                              <div class="mt-4">
+                                <button type="submit" class="p-2 text-white" name="Submit" style="background-color: #009879; border-radius: 10px; border: none;">Book</button>
+                              </div>
+                          </label>
+
+                        </tr>
+                      </table>
+                    </form>
+                  </td>
+        
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+    </div>
+</body>
+{% endblock %}

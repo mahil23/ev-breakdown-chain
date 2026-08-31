@@ -1,0 +1,31 @@
+{% extends 'EVINDEX.html'%}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="341" border="1" class="table table-dark table-striped">
+    <tr>
+      <th scope="row">#</th>
+      <td>User name</td>
+      <td>slot</td>
+      <td>date</td>
+      <td>status</td>
+
+    </tr>
+    {% for i in val %}
+    <tr>
+      <th> {{i['loop.index']}}</th>
+      <td scope="row">{{i['fname']}} {{i['lname']}}</td>
+      <td>&nbsp;{{i['slot_number']}}</td>
+      <td>&nbsp;{{i['booking_date']}} ,  {{i['booking_time']}}</td>
+
+
+      <td>      {% if i['status']== 'Accepted' %}Accepted {% elif i['status']== 'Reject' %} Rejected {% else %}
+
+        <p><a href="accept_user_request?id={{i['bid']}}">Accept</a></p>
+      <p><a href="reject_user_request?id={{i['bid']}}">Reject</a></p> {% endif %}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

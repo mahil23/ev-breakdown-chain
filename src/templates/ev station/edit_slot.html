@@ -1,0 +1,37 @@
+{% extends 'EVINDEX.html'%}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="edit_slot1">
+  <table width="200" border="1" class="table table-dark table-striped">
+    <tr>
+      <th scope="row">slot Type</th>
+      <td><label>
+      <select name="select">
+        <option> slow</option>
+        <option>fast</option>
+<!--        <option></option>-->
+
+      </select>
+      </label></td>
+    </tr>
+      <th scope="row">slot no</th>
+      <td><label>
+        <input type="text" name="textfield2" value="{{val['slot_number']}}" required/>
+      </label></td>
+    </tr>
+
+    <tr>
+      <th scope="row">Details</th>
+      <td><label>
+        <input type="text" name="textfield3" value="{{val['details']}}" required/>
+      </label></td>
+    </tr>
+    <tr>
+      <th colspan="2" scope="row"><label>
+        <input type="submit" name="Submit" value="Update" />
+      </label></th>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

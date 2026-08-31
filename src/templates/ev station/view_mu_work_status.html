@@ -1,0 +1,24 @@
+{% extends 'EVINDEX.html'%}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1" class="table table-dark table-striped">
+    <tr>
+      <th width="49" scope="col">Mobile unit name</th>
+      <th width="58" scope="col">status</th>
+      <!--<th width="61" scope="col">capacity</th>-->
+      <!--<th width="8" scope="col">&nbsp;</th>-->
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td>&nbsp;{{i['driver']}} </td>
+      <td>&nbsp;{{i['status']}}</td>
+      <!--<td>&nbsp;</td>-->
+      <!--<td><p><a href="#">edit</a></p>-->
+      <!--<p><a href="#">delete</a></p></td>-->
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

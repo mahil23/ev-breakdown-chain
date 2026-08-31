@@ -1,0 +1,34 @@
+{% extends 'EVINDEX.html'%}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="add_mobile_unit">
+  <table width="200" border="1" class="table table-dark table-striped">
+    <tr>
+      <th >Driver name</th>
+      <th >Vehicle name</th>
+      <th >Capacity</th>
+<!--      <th scope="col">LATITUDE</th>-->
+      <th ></th>
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td>&nbsp;{{i['driver']}} </td>
+      <td>&nbsp;{{i['vehicle_num']}}</td>
+      <td>&nbsp;{{i['capacity']}}</td>
+<!--      <td>&nbsp;{{i['']}}</td>-->
+<!--      <td>&nbsp;{{i['']}}</td>-->
+            <td> <p><a href="edit_mobile_unit?id={{i['lid']}}">Edit</a></p>
+      <p><a href="delete_mu?id={{i['lid']}}">Delete</a></p></td>
+
+
+    </tr>
+    {% endfor %}
+    <tr>
+      <th colspan="4" scope="row"><label>
+        <input type="submit" name="submit" value="ADD" />
+      </label></th>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

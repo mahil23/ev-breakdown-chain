@@ -1,0 +1,45 @@
+{% extends 'EVINDEX.html' %}
+{% block body %}
+
+<body class="bg-light">
+  <div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg p-4 rounded-4" style="max-width: 500px; width: 100%;">
+      <div class="card-header text-center bg-dark text-white rounded-top-4">
+        <h3 class="mb-0">Update EV Profile</h3>
+      </div>
+      <div class="card-body">
+        <form id="form1" name="form1" method="post" action="update_ev_profile">
+          <div class="mb-3">
+            <label class="form-label fw-bold">Name</label>
+            <input type="text" name="textfield" class="form-control" value="{{ val['name'] }}" required pattern="[A-Z a-z.]{1,25}" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-bold">Place</label>
+            <input type="text" name="textfield2" class="form-control" value="{{ val['place'] }}" required pattern="[A-Z a-z.]{1,25}" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-bold">Phone</label>
+            <input type="text" name="textfield3" class="form-control" value="{{ val['phone'] }}" required pattern="[6789][0-9]{9}" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-bold">Email</label>
+            <input type="email" name="textfield4" class="form-control" value="{{ val['email'] }}" required />
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-bold">Latitude</label>
+            <input type="text" name="textfield5" class="form-control" value="{{ val['latitude'] }}" required pattern="[0-9 0-9.]{1,25}" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-bold">Longitude</label>
+            <input type="text" name="textfield6" class="form-control" value="{{ val['longitude'] }}" required pattern="[0-9 0-9.]{1,25}" />
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-dark w-100 py-2">Update Profile</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+{% endblock %}

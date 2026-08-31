@@ -1,0 +1,26 @@
+{% extends 'userindex.html'%}
+{% block body %}
+<body>
+    <div class="table-container" >
+        <table>
+          <thead>
+            <tr>
+
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in val %}
+            <tr>
+
+              <td>{{ i['status']}}</td>
+              <td>{{ i['date']}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</body>
+
+{% endblock %}

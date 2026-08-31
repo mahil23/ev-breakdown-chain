@@ -1,0 +1,45 @@
+{% extends 'mechindex.html'%}
+{% block body %}
+
+<body>
+  <div class="container mt-4">
+    <h2 class="text-center mb-4">User Requests</h2>
+    <form id="form1" name="form1" method="post" action="">
+      <table class="table table-bordered table-hover shadow-sm">
+        <thead class="text-center">
+          <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Request</th>
+            <th scope="col">Date</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody class="">
+          {% for i in val %}
+          <tr>
+            <td>{{ i['Fname'] }} {{ i['Lname'] }}</td>
+            <td>{{ i['request'] }}</td>
+            <td>{{ i['date'] }}</td>
+            <td>
+              <a href="https://www.google.com/maps?q={{ i['lat'] }},{{ i['longi'] }}" target="_blank"
+                class="btn btn-info btn-sm">
+                Track Location
+              </a>
+              {% if i['status'] == 'Accepted' %}
+              <span class="badge bg-success">Accepted</span>
+              {% elif i['status'] == 'Reject' %}
+              <span class="badge bg-danger">Rejected</span>
+              {% else %}
+              <a href="accept_request?id={{ i['id'] }}" class="btn btn-success btn-sm">Accept</a>
+              <a href="reject_request?id={{ i['id'] }}" class="btn btn-danger btn-sm">Reject</a>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </form>
+  </div>
+
+</body>
+{% endblock %}

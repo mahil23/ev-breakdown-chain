@@ -1,0 +1,35 @@
+ {% extends 'EVINDEX.html'%}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="assigm_mobunit1">
+
+<table width="219" border="1" class="table table-dark table-striped">
+  <tr>
+    <th width="68" scope="row">unit</th>
+    <td width="135"><label>
+      <select name="select">
+        {% for i in val %}
+        <option value="{{i['lid']}}">{{i['driver']}}</option>
+        {% endfor %}
+      </select>
+    </label></td>
+  </tr>
+  <tr>
+    <th width="68" scope="row">Requested order</th>
+    <td width="135"><label>
+      <select name="select2">
+         {% for i in val1 %}
+        <option value="{{i['id']}}">{{i['fname']}} {{i['lname']}}</option>
+        {% endfor %}
+      </select>
+    </label></td>
+  </tr>
+  <tr>
+    <th colspan="2" scope="row"><label>
+      <input type="submit" name="Submit" value="assign" />
+    </label></th>
+    </tr>
+</table>
+</form>
+</body>
+{% endblock %}
